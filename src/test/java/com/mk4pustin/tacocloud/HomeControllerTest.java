@@ -1,5 +1,6 @@
 package com.mk4pustin.tacocloud;
 
+import com.mk4pustin.tacocloud.controllers.HomeController;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
