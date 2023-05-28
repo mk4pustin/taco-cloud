@@ -1,6 +1,7 @@
 package com.mk4pustin.tacocloud.controllers;
 
-import com.mk4pustin.tacocloud.TacoOrder;
+import com.mk4pustin.tacocloud.data.order.TacoOrder;
+import com.mk4pustin.tacocloud.repository.tacoorder.OrderRepository;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,11 @@ import org.springframework.web.bind.support.SessionStatus;
 @RequestMapping("/orders")
 @SessionAttributes("tacoOrder")
 public class OrderController {
+    private final OrderRepository orderRepository;
+
+    public OrderController(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
 
     @GetMapping("/current")
     public String orderForm() {
@@ -28,6 +34,7 @@ public class OrderController {
             SessionStatus status) {
         if (errors.hasErrors()) return "orderForm";
 
+        orderRepository.save(order);
         log.info("Order submitted: {}", order);
         status.setComplete();
 

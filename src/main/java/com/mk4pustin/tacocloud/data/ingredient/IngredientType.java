@@ -1,4 +1,4 @@
-package com.mk4pustin.tacocloud;
+package com.mk4pustin.tacocloud.data.ingredient;
 
 public enum IngredientType {
     WRAP,
